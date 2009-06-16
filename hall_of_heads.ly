@@ -1,42 +1,24 @@
-global= {
+\version "2.12.0"
+
+global = {
   \time 4/4
-  \key c \minor
+  \tempo 4 = 93 
+%{  \tempo 4 = 185%}
 }
 
-soprano = \new Voice \relative c'' {
-  \set Staff.instrumentName = #"Soprano "
-  
-  r1*17
-  
-}
- 
-alto = \new Voice \relative c'' {
-  \set Staff.instrumentName = #"Alto "
-  
-  r2 bes4 bes |
-  ees2 r8 g f ees |
-  des2
-  
-}
+Key = { \key ees \major }
 
-tenor = \new Voice \relative c' {
-  \set Staff.instrumentName = #"Tenor "  
-  
-
-}
-
-bari = \new Voice \relative c' {
-  \set Staff.instrumentName = #"Bari "
-  
-
-}
+\include "alto.ily"
+\include "tenor1.ily"
+\include "tenor2.ily"
+\include "bari.ily"
 
 \score {
   \new StaffGroup <<
-    \new Staff << \global \soprano >>
-    \new Staff << \global \alto >>
-    \new Staff << \global \tenor >>
-    \new Staff << \global \bari >>
+    \new Staff = "alto" \altoSax
+    \new Staff = "tenor1" \tenorSaxOne
+    \new Staff = "tenor2" \tenorSaxTwo
+    \new Staff = "bari" \bariSax
   >>
   \layout { }
   \midi { }
